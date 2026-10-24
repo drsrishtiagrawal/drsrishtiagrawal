@@ -44,16 +44,11 @@ export default function App() {
   };
 
   const visible = personaModules[persona];
-  const isFull = persona === 'full';
+  const showReferences = persona === 'full' || persona === 'business';
 
   return (
     <div className="min-h-screen bg-base">
-      <StatusBar
-        theme={theme}
-        onToggleTheme={toggleTheme}
-        onExportPitch={() => setPitchOpen(true)}
-        onOpenFSSAI={() => setFssaiOpen(true)}
-      />
+      <StatusBar />
       <Navbar
         active={activeNav}
         onNav={scrollTo}
@@ -93,8 +88,8 @@ export default function App() {
         {visible.has('roadmap') && (
           <PilotRoadmap />
         )}
-        {/* references always visible */}
-        {isFull && (
+        {/* references visible for full + business personas */}
+        {showReferences && (
           <ReferencesFooter
             pitchOpen={pitchOpen}
             onPitchOpen={() => setPitchOpen(true)}

@@ -27,6 +27,7 @@ export function DataTagBadge({ tag, size = 'xs' }: { tag: DataTag; size?: 'xs' |
 
 export function Tooltip({ term, children }: { term: string; children?: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [flipDown, setFlipDown] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const definition = glossary[term] ?? children;
 
@@ -39,20 +40,33 @@ export function Tooltip({ term, children }: { term: string; children?: ReactNode
     return () => document.removeEventListener('mousedown', handler);
   }, [open]);
 
+  const handleOpen = () => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setFlipDown(rect.top < 220); // not enough room above — flip below
+    }
+    setOpen(true);
+  };
+
   if (!definition) return <>{children}</>;
 
   return (
     <span ref={ref} className="relative inline-flex">
       <button
-        onClick={() => setOpen((o) => !o)}
-        onMouseEnter={() => setOpen(true)}
+        onClick={() => (open ? setOpen(false) : handleOpen())}
+        onMouseEnter={handleOpen}
+        onMouseLeave={() => setOpen(false)}
         className="inline-flex items-center gap-0.5 text-forest-400 transition hover:text-forest-300"
         type="button"
       >
         {children ?? <Info className="h-3.5 w-3.5" />}
       </button>
       {open && (
-        <span className="absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 animate-fade-up rounded-xl border border-theme-strong bg-elevated p-3 text-xs leading-relaxed text-secondary shadow-xl">
+        <span
+          className={`absolute left-1/2 z-50 w-64 -translate-x-1/2 animate-fade-up rounded-xl border border-theme-strong bg-elevated p-3 text-xs leading-relaxed text-secondary shadow-xl ${
+            flipDown ? 'top-full mt-2' : 'bottom-full mb-2'
+          }`}
+        >
           <span className="mb-1 block font-display text-xs font-bold text-primary">{term}</span>
           {definition}
         </span>
