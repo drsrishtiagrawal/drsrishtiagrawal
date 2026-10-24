@@ -75,9 +75,9 @@ export function TechnoFunctionalEngine({ selectedId }: Props) {
               />
             </div>
             <div className="mt-5 rounded-xl border border-theme bg-card-soft p-3">
-              <div className="text-[11px] font-medium text-muted">Active feedstock</div>
+              <div className="text-sm font-medium text-muted">Active feedstock</div>
               <div className="font-display text-sm font-bold text-primary">{bp.emoji} {bp.shortName}</div>
-              <div className="mt-1 text-xs text-muted">PDCAAS baseline: {bp.pdcaas.toFixed(2)}</div>
+              <div className="mt-1 text-sm text-muted">PDCAAS baseline: {bp.pdcaas.toFixed(2)}</div>
             </div>
           </Panel>
         </div>
@@ -105,7 +105,7 @@ export function TechnoFunctionalEngine({ selectedId }: Props) {
               </div>
               <span className="font-display text-2xl font-bold text-cyanx-400">{results.eaaMatch}%</span>
             </div>
-            <div className="mb-2 text-xs text-muted">vs FAO/WHO 2013 reference standard</div>
+            <div className="mb-2 text-sm text-muted">vs FAO/WHO 2013 reference standard</div>
             <div className="space-y-3">
               {bp.aminoAcids.map((aa) => {
                 const ratio = Math.min(1.2, aa.upcycled / aa.reference);
@@ -113,7 +113,7 @@ export function TechnoFunctionalEngine({ selectedId }: Props) {
                 const meets = aa.upcycled >= aa.reference;
                 return (
                   <div key={aa.name}>
-                    <div className="mb-1 flex items-center justify-between text-xs">
+                    <div className="mb-1 flex items-center justify-between text-sm">
                       <span className="font-semibold text-primary">{aa.name} <span className="font-mono text-muted">({aa.abbreviation})</span></span>
                       <span className={`font-mono font-bold ${meets ? 'text-forest-300' : 'text-amber-400'}`}>
                         {aa.upcycled}/{aa.reference} mg/g
@@ -131,7 +131,7 @@ export function TechnoFunctionalEngine({ selectedId }: Props) {
                 );
               })}
             </div>
-            <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-card-soft p-2.5 text-[10px] text-muted">
+            <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-card-soft p-2.5 text-sm text-muted">
               <Info className="mt-0.5 h-3 w-3 shrink-0" />
               <span>Cyan line = FAO/WHO 2013 reference. Green = meets/exceeds reference; amber = limiting amino acid. Methionine is typically limiting for legume proteins; lysine for cereals.</span>
             </div>
@@ -147,10 +147,10 @@ export function TechnoFunctionalEngine({ selectedId }: Props) {
             <MetricCard label="EAA Match" value={`${results.eaaMatch}%`} tone="purple" sub="vs FAO/WHO 2013" />
           </div>
           <Panel className="bg-forest-600/5">
-            <div className="flex items-center gap-2 text-xs font-semibold text-forest-300">
+            <div className="flex items-center gap-2 text-sm font-semibold text-forest-300">
               <FlaskConical className="h-4 w-4" /> Functional insight
             </div>
-            <p className="mt-2 text-xs leading-relaxed text-secondary">
+            <p className="mt-2 text-sm leading-relaxed text-secondary">
               At pH {ph} and {salt}mM NaCl, this isolate achieves EAI of {results.eai} m²/g — {results.eai > 100 ? 'comparable to commercial pea isolate' : 'suitable for beverages and bakery'}. IVPD of {results.ivpd}% indicates {results.ivpd > 80 ? 'excellent' : 'good'} bioavailability after enzymatic treatment.
             </p>
           </Panel>
@@ -166,12 +166,12 @@ function FuncBar({ label, value, unit, max, tone, info }: { label: string; value
   return (
     <div className="rounded-xl bg-card-soft p-3">
       <div className="flex items-center justify-between">
-        <span className="flex items-center gap-1 text-xs text-secondary">
+        <span className="flex items-center gap-1 text-sm text-secondary">
           {label}
           {info && <Tooltip term={info} />}
         </span>
         <span className={`font-display text-lg font-bold ${textTones[tone]}`}>
-          {value}<span className="ml-0.5 text-xs text-muted">{unit}</span>
+          {value}<span className="ml-0.5 text-sm text-muted">{unit}</span>
         </span>
       </div>
       <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-card-soft">

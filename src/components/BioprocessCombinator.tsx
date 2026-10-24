@@ -75,7 +75,7 @@ export function BioprocessCombinator({ selectedId }: Props) {
           {processStages.map((stage) => (
             <Panel key={stage.id}>
               <div className="mb-3 flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-forest-600/20 font-mono text-xs font-bold text-forest-300 ring-1 ring-forest-600/40">
+                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-forest-600/20 font-mono text-sm font-bold text-forest-300 ring-1 ring-forest-600/40">
                   {stage.number}
                 </span>
                 <h4 className="font-display text-sm font-semibold text-primary">{stage.title}</h4>
@@ -112,8 +112,8 @@ export function BioprocessCombinator({ selectedId }: Props) {
                               )}
                             </span>
                           </div>
-                          <div className="mt-0.5 font-mono text-[11px] text-cyanx-400">{opt.sub}</div>
-                          <div className="mt-1 text-xs text-muted">{opt.note}</div>
+                          <div className="mt-0.5 font-mono text-sm text-cyanx-400">{opt.sub}</div>
+                          <div className="mt-1 text-sm text-muted">{opt.note}</div>
                           <div className="mt-2 flex flex-wrap gap-1.5">
                             <MiniStat label="yield" value={`${opt.yieldDelta > 0 ? '+' : ''}${opt.yieldDelta}pp`} tone="emerald" />
                             <MiniStat label="flavor" value={`-${Math.round(opt.flavorRemoval * 100)}%`} tone="amber" />
@@ -138,13 +138,13 @@ export function BioprocessCombinator({ selectedId }: Props) {
                 <Zap className="h-4 w-4 text-forest-400" />
                 <h4 className="font-display text-sm font-semibold text-primary">Live synthesis output</h4>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full bg-forest-500/15 px-2 py-0.5 text-[10px] font-bold text-forest-300">
+              <span className="flex items-center gap-1.5 rounded-full bg-forest-500/15 px-2 py-0.5 text-sm font-bold text-forest-300">
                 <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-forest-400" /> REAL-TIME
               </span>
             </div>
 
             <div className="mb-3 rounded-xl bg-card-soft p-3">
-              <div className="text-[11px] text-muted">Feedstock</div>
+              <div className="text-sm text-muted">Feedstock</div>
               <div className="font-display text-sm font-bold text-primary">{bp.emoji} {bp.name}</div>
             </div>
 
@@ -161,7 +161,7 @@ export function BioprocessCombinator({ selectedId }: Props) {
 
             {/* cumulative yield note */}
             <div className="mb-3 rounded-xl border border-theme bg-card-soft p-2.5">
-              <div className="flex items-start gap-1.5 text-[10px] text-muted">
+              <div className="flex items-start gap-1.5 text-sm text-muted">
                 <Info className="mt-0.5 h-3 w-3 shrink-0" />
                 <span>
                   Adjusted for {Math.round(CUMULATIVE_YIELD_LOSS * 100)}% cumulative recovery yield loss
@@ -172,18 +172,18 @@ export function BioprocessCombinator({ selectedId }: Props) {
 
             {/* chosen path */}
             <div className="rounded-xl border border-theme bg-card-soft p-3">
-              <div className="mb-2 font-mono text-[10px] uppercase tracking-wider text-muted">selected pathway</div>
+              <div className="mb-2 font-mono text-sm uppercase tracking-wider text-muted">selected pathway</div>
               <div className="space-y-1.5">
                 {results.chosen.map((c, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs">
-                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded bg-forest-600/30 font-mono text-[9px] font-bold text-forest-300">{i + 1}</span>
+                  <div key={i} className="flex items-start gap-2 text-sm">
+                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded bg-forest-600/30 font-mono text-sm font-bold text-forest-300">{i + 1}</span>
                     <span className="text-secondary">{c.optionLabel}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-forest-600/10 py-2 text-xs font-semibold text-forest-300">
+            <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-forest-600/10 py-2 text-sm font-semibold text-forest-300">
               <IndianRupee className="h-3.5 w-3.5" />
               Total est. ₹{results.processCost + 25}/kg incl. raw material · 65% below pea benchmark
             </div>
@@ -201,7 +201,7 @@ function MiniStat({ label, value, tone }: { label: string; value: string; tone: 
     cyan: 'bg-cyanx-500/10 text-cyanx-400',
     purple: 'bg-purple-500/10 text-purple-400',
   };
-  return <span className={`rounded-md px-1.5 py-0.5 font-mono text-[10px] font-semibold ${tones[tone]}`}>{label} {value}</span>;
+  return <span className={`rounded-md px-1.5 py-0.5 font-mono text-sm font-semibold ${tones[tone]}`}>{label} {value}</span>;
 }
 
 function ResultBar({ icon, label, value, pct, tone }: { icon: React.ReactNode; label: string; value: string; pct: number; tone: 'emerald' | 'amber' | 'purple' }) {
@@ -214,7 +214,7 @@ function ResultBar({ icon, label, value, pct, tone }: { icon: React.ReactNode; l
   return (
     <div className="rounded-xl bg-card-soft p-3">
       <div className="flex items-center justify-between">
-        <span className="flex items-center gap-1.5 text-xs text-secondary">{icon} {label}</span>
+        <span className="flex items-center gap-1.5 text-sm text-secondary">{icon} {label}</span>
         <span className={`font-display text-lg font-bold ${textTones[tone]}`}>{value}</span>
       </div>
       <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-card-soft">

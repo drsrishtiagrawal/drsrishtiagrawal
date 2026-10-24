@@ -41,7 +41,7 @@ export function ComplianceDossier({ selectedId, open, onOpen, onClose }: Props) 
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <h3 className="font-display text-base font-bold text-primary">FSSAI Category 12.8</h3>
-              <span className="rounded-md bg-forest-500/15 px-2 py-0.5 text-[10px] font-bold text-forest-300">FAST-TRACK</span>
+              <span className="rounded-md bg-forest-500/15 px-2 py-0.5 text-sm font-bold text-forest-300">FAST-TRACK</span>
             </div>
             <p className="text-sm text-secondary">Proprietary Food — Plant Protein Formulations & Isolate Ingredients</p>
           </div>
@@ -72,11 +72,11 @@ export function ComplianceDossier({ selectedId, open, onOpen, onClose }: Props) 
                     <span className="text-sm font-semibold text-primary">{check.parameter}</span>
                     <DataTagBadge tag={check.tag} />
                   </div>
-                  <div className="mt-0.5 font-mono text-xs text-cyanx-400">{check.threshold}</div>
+                  <div className="mt-0.5 font-mono text-sm text-cyanx-400">{check.threshold}</div>
                   <div className="mt-1 flex items-center gap-2">
-                    <span className={`rounded px-1.5 py-0.5 font-mono text-[10px] font-bold ${st.bg} ${st.color}`}>[STATUS: {check.status}]</span>
+                    <span className={`rounded px-1.5 py-0.5 font-mono text-sm font-bold ${st.bg} ${st.color}`}>[STATUS: {check.status}]</span>
                   </div>
-                  <div className="mt-1 text-xs text-muted">{check.detail}</div>
+                  <div className="mt-1 text-sm text-muted">{check.detail}</div>
                 </div>
               </div>
             );
@@ -91,14 +91,14 @@ export function ComplianceDossier({ selectedId, open, onOpen, onClose }: Props) 
             <div className="flex items-center justify-between">
               <div>
                 <div className="font-display text-lg font-bold text-primary">FSSAI Category 12.8</div>
-                <div className="text-xs text-muted">Proprietary Food — Plant Protein Formulations</div>
+                <div className="text-sm text-muted">Proprietary Food — Plant Protein Formulations</div>
               </div>
-              <span className="rounded-lg bg-forest-500/15 px-3 py-1 text-xs font-bold text-forest-300">READY FOR FILING</span>
+              <span className="rounded-lg bg-forest-500/15 px-3 py-1 text-sm font-bold text-forest-300">READY FOR FILING</span>
             </div>
           </div>
 
           <div className="rounded-xl border border-theme bg-card-soft p-4">
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">Product Details</div>
+            <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted">Product Details</div>
             <div className="grid grid-cols-2 gap-2 text-sm">
               <ReportRow label="Feedstock" value={`${bp.emoji} ${bp.name}`} />
               <ReportRow label="Protein content" value={`${bp.targetPurity}%`} />
@@ -108,12 +108,12 @@ export function ComplianceDossier({ selectedId, open, onOpen, onClose }: Props) 
           </div>
 
           <div className="rounded-xl border border-theme bg-card-soft p-4">
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">Safety Compliance Summary</div>
+            <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted">Safety Compliance Summary</div>
             <div className="space-y-1.5">
               {safetyChecks.map((c) => {
                 const st = statusConfig[c.status];
                 return (
-                  <div key={c.parameter} className="flex items-center justify-between text-xs">
+                  <div key={c.parameter} className="flex items-center justify-between text-sm">
                     <span className="text-secondary">{c.parameter}</span>
                     <span className="flex items-center gap-2">
                       <span className="font-mono text-muted">{c.threshold}</span>
@@ -133,7 +133,7 @@ export function ComplianceDossier({ selectedId, open, onOpen, onClose }: Props) 
               Close
             </button>
           </div>
-          <div className="flex items-start gap-1.5 rounded-lg bg-card-soft p-3 text-[10px] text-muted">
+          <div className="flex items-start gap-1.5 rounded-lg bg-card-soft p-3 text-sm text-muted">
             <Info className="mt-0.5 h-3 w-3 shrink-0" />
             <span>This is a demo compliance dossier for the NIFTEM-K Hack the Fork 2026 hackathon. All safety thresholds reference FSSR 2011 (amended 2022). Actual filing requires NABL-accredited laboratory verification.</span>
           </div>
@@ -146,7 +146,7 @@ export function ComplianceDossier({ selectedId, open, onOpen, onClose }: Props) 
 function ReportRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wider text-muted">{label}</div>
+      <div className="text-sm uppercase tracking-wider text-muted">{label}</div>
       <div className="font-semibold text-primary">{value}</div>
     </div>
   );

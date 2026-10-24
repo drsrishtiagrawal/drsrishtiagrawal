@@ -29,7 +29,7 @@ export function PilotRoadmap() {
             return <div key={i} className={`h-full bg-gradient-to-r ${colors[i]}`} style={{ width: `${(r.budget / TOTAL_BUDGET) * 100}%` }} title={`${r.month}: ₹${r.budget}L`} />;
           })}
         </div>
-        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
           {roadmap.map((r, i) => (
             <span key={i} className="flex items-center gap-1.5 text-secondary">
               <span className={`h-2 w-2 rounded-sm bg-gradient-to-r ${['from-forest-600 to-forest-400', 'from-cyanx-600 to-cyanx-400', 'from-amber-600 to-amber-400'][i]}`} />
@@ -50,23 +50,23 @@ export function PilotRoadmap() {
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-forest-600/15 text-forest-300 ring-1 ring-forest-600/30">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold ${i === 0 ? 'bg-forest-500/15 text-forest-300' : 'bg-cyanx-500/15 text-cyanx-400'}`}>
+                  <span className={`rounded-full px-2.5 py-1 text-sm font-bold ${i === 0 ? 'bg-forest-500/15 text-forest-300' : 'bg-cyanx-500/15 text-cyanx-400'}`}>
                     {i === 0 ? 'Active' : 'Planned'}
                   </span>
                 </div>
-                <div className="mb-1 font-mono text-xs font-semibold text-cyanx-400">{m.month}</div>
+                <div className="mb-1 font-mono text-sm font-semibold text-cyanx-400">{m.month}</div>
                 <h4 className="font-display text-base font-bold leading-tight text-primary">{m.title}</h4>
-                <p className="mt-1 text-xs text-secondary">{m.subtitle}</p>
+                <p className="mt-1 text-sm text-secondary">{m.subtitle}</p>
                 <div className="mt-4 space-y-2">
                   {m.deliverables.map((d, di) => (
                     <div key={di} className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
-                      <span className="text-xs leading-relaxed text-secondary">{d}</span>
+                      <span className="text-sm leading-relaxed text-secondary">{d}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-4 flex items-center justify-between border-t border-theme pt-3">
-                  <span className="text-xs text-muted">Phase budget</span>
+                  <span className="text-sm text-muted">Phase budget</span>
                   <span className="font-display text-sm font-bold text-forest-300">₹{m.budget} Lakhs</span>
                 </div>
               </div>

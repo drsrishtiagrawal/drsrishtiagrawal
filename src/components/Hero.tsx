@@ -14,7 +14,7 @@ export function Hero({ onExplore }: Props) {
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-forest-600/40 bg-forest-600/10 px-3 py-1.5 text-xs font-semibold text-forest-300">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-forest-600/40 bg-forest-600/10 px-3 py-1.5 text-sm font-semibold text-forest-300">
               <Leaf className="h-3.5 w-3.5" />
               Problem Statement 2 · Upcycling India's By-products for Alternative Proteins
             </div>
@@ -60,12 +60,12 @@ export function Hero({ onExplore }: Props) {
               <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-forest-600/30 to-cyanx-500/20 blur-2xl" />
               <div className="glass rounded-[2rem] p-6 shadow-card">
                 <div className="mb-4 flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted">engine.live_output</span>
-                  <span className="flex items-center gap-1.5 rounded-full bg-forest-500/15 px-2 py-0.5 text-[10px] font-bold text-forest-300">
+                  <span className="font-mono text-sm uppercase tracking-wider text-muted">engine.live_output</span>
+                  <span className="flex items-center gap-1.5 rounded-full bg-forest-500/15 px-2 py-0.5 text-sm font-bold text-forest-300">
                     <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-forest-400" /> RUNNING
                   </span>
                 </div>
-                <div className="space-y-3 font-mono text-xs">
+                <div className="space-y-3 font-mono text-sm">
                   <CodeLine label="› feedstock" value="groundnut_cake" tone="cyan" />
                   <CodeLine label="› antinutrient_scan" value="polyphenols: 18.5 mg/g" />
                   <CodeLine label="› volatile_profile" value="hexanal, 2-pentylfuran" />
@@ -79,11 +79,11 @@ export function Hero({ onExplore }: Props) {
                 <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-card-soft">
                   <div className="h-full w-[74%] rounded-full bg-gradient-to-r from-forest-500 to-cyanx-400" style={{ backgroundSize: '200% 100%' }} />
                 </div>
-                <div className="mt-2 flex justify-between font-mono text-[10px] text-muted">
+                <div className="mt-2 flex justify-between font-mono text-sm text-muted">
                   <span>protein purity</span>
                   <span className="text-forest-300">74% / 80% target</span>
                 </div>
-                <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-forest-600/10 px-2 py-1.5 text-[10px] font-semibold text-forest-300">
+                <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-forest-600/10 px-2 py-1.5 text-sm font-semibold text-forest-300">
                   <Sparkles className="h-3 w-3" /> GFI India · NIFTEM Smart Protein Lab
                 </div>
               </div>
@@ -102,7 +102,7 @@ function HeroStat({ icon, value, label }: { icon: React.ReactNode; value: string
         {icon}
         <span className="font-display text-xl font-bold text-primary sm:text-2xl">{value}</span>
       </div>
-      <div className="text-xs font-medium text-muted">{label}</div>
+      <div className="text-sm font-medium text-muted">{label}</div>
     </div>
   );
 }

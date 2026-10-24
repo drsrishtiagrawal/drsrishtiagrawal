@@ -81,13 +81,13 @@ export function EconomicCalculator({ selectedId }: Props) {
 
           <Panel className="border-cyanx-500/20">
             <div className="flex items-center gap-2">
-              <span className="rounded bg-cyanx-500/15 px-2 py-0.5 font-mono text-[10px] font-semibold text-cyanx-400">BENCHMARK</span>
+              <span className="rounded bg-cyanx-500/15 px-2 py-0.5 font-mono text-sm font-semibold text-cyanx-400">BENCHMARK</span>
             </div>
             <div className="mt-2 flex items-center justify-between">
               <span className="text-sm text-secondary">Imported pea protein isolate</span>
               <span className="font-display text-lg font-bold text-primary">₹{model.benchmarkCost}/kg</span>
             </div>
-            <div className="mt-1 text-xs text-muted">~${PEA_BENCHMARK.usdPerKg}/kg · 6–8 wk import lead time · EU/NA origin</div>
+            <div className="mt-1 text-sm text-muted">~${PEA_BENCHMARK.usdPerKg}/kg · 6–8 wk import lead time · EU/NA origin</div>
           </Panel>
         </div>
 
@@ -95,7 +95,7 @@ export function EconomicCalculator({ selectedId }: Props) {
         <div className="space-y-4">
           <Panel>
             <h4 className="mb-1 font-display text-sm font-semibold text-primary">Cost per kg comparison</h4>
-            <p className="mb-4 text-xs text-muted">₹/kg finished protein isolate</p>
+            <p className="mb-4 text-sm text-muted">₹/kg finished protein isolate</p>
             <div className="h-56">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={model.chartData} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
@@ -110,7 +110,7 @@ export function EconomicCalculator({ selectedId }: Props) {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div className="mt-3 flex items-center justify-center gap-4 text-xs">
+            <div className="mt-3 flex items-center justify-center gap-4 text-sm">
               <span className="flex items-center gap-1.5 font-semibold text-forest-300"><span className="h-2.5 w-2.5 rounded-sm bg-forest-500" /> Upcycled</span>
               <span className="flex items-center gap-1.5 font-semibold text-muted"><span className="h-2.5 w-2.5 rounded-sm bg-slate-500" /> Imported pea</span>
             </div>
@@ -124,7 +124,7 @@ export function EconomicCalculator({ selectedId }: Props) {
             <TrendingDown className="mb-2 h-6 w-6 text-forest-200" />
             <div className="font-display text-3xl font-bold text-white">{model.savingPct}%</div>
             <div className="text-sm font-medium text-forest-100">cost reduction per kg</div>
-            <div className="mt-1 text-xs text-forest-200/80">₹{model.upcycledCost} vs ₹{model.benchmarkCost}/kg</div>
+            <div className="mt-1 text-sm text-forest-200/80">₹{model.upcycledCost} vs ₹{model.benchmarkCost}/kg</div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -137,10 +137,10 @@ export function EconomicCalculator({ selectedId }: Props) {
           </div>
 
           <Panel className="bg-forest-600/5">
-            <div className="flex items-center gap-2 text-xs font-semibold text-forest-300">
+            <div className="flex items-center gap-2 text-sm font-semibold text-forest-300">
               <PiggyBank className="h-4 w-4" /> Arbitrage insight
             </div>
-            <p className="mt-2 text-xs leading-relaxed text-secondary">
+            <p className="mt-2 text-sm leading-relaxed text-secondary">
               At ₹{rawPrice}/kg mandi price and {capacity} T/day, this upcycled protein delivers
               <span className="font-semibold text-forest-300"> ₹{model.savingPerKg}/kg savings</span> — a
               <span className="font-semibold text-cyanx-400"> ₹{model.annualSavingCr} Cr/yr</span> opportunity with
@@ -156,7 +156,7 @@ export function EconomicCalculator({ selectedId }: Props) {
 function MiniInfo({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="rounded-lg bg-card-soft p-2.5">
-      <div className="flex items-center gap-1.5 text-[10px] text-muted">{icon} {label}</div>
+      <div className="flex items-center gap-1.5 text-sm text-muted">{icon} {label}</div>
       <div className="mt-0.5 font-display text-sm font-bold text-primary">{value}</div>
     </div>
   );

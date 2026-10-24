@@ -35,12 +35,12 @@ export function ByProductSelector({ selectedId, onSelect }: Props) {
             >
               <div className="mb-2 text-3xl">{b.emoji}</div>
               <div className="font-display text-sm font-bold leading-tight text-primary">{b.shortName}</div>
-              <div className="mt-1 text-[11px] font-medium text-muted">{b.region}</div>
+              <div className="mt-1 text-sm font-medium text-muted">{b.region}</div>
               <div className="mt-2 flex items-center justify-between">
-                <span className="rounded-md bg-white/5 px-1.5 py-0.5 text-[10px] font-semibold text-secondary">
+                <span className="rounded-md bg-white/5 px-1.5 py-0.5 text-sm font-semibold text-secondary">
                   {b.initialProtein}% protein
                 </span>
-                <span className={`text-[10px] font-bold ${active ? 'text-forest-300' : 'text-muted'}`}>→ {b.targetPurity}%</span>
+                <span className={`text-sm font-bold ${active ? 'text-forest-300' : 'text-muted'}`}>→ {b.targetPurity}%</span>
               </div>
             </button>
           );
@@ -59,7 +59,7 @@ export function ByProductSelector({ selectedId, onSelect }: Props) {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-display text-lg font-bold text-primary">{selected.name}</h3>
-                  <p className="flex items-center gap-1 text-xs text-muted">
+                  <p className="flex items-center gap-1 text-sm text-muted">
                     <MapPin className="h-3 w-3" /> {selected.region} · {selected.annualSupply}
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export function ByProductSelector({ selectedId, onSelect }: Props) {
                     </div>
                     <div className="mt-1 font-mono text-lg font-bold text-amber-400">
                       {a.concentration}
-                      <span className="ml-1 text-xs font-medium text-muted">{a.unit}</span>
+                      <span className="ml-1 text-sm font-medium text-muted">{a.unit}</span>
                     </div>
                     <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-card-soft">
                       <div className="h-full rounded-full bg-gradient-to-r from-amber-600 to-amber-400" style={{ width: `${Math.min(100, (a.concentration / 130) * 100)}%` }} />
@@ -110,10 +110,10 @@ export function ByProductSelector({ selectedId, onSelect }: Props) {
                         <span className="text-sm font-semibold text-primary">{v.name}</span>
                         <Tooltip term={v.name}>{v.desc}</Tooltip>
                       </div>
-                      <div className="mt-0.5 text-xs text-muted">{v.category}</div>
+                      <div className="mt-0.5 text-sm text-muted">{v.category}</div>
                     </div>
                     <div className="w-24">
-                      <div className="mb-1 text-right font-mono text-xs font-bold text-cyanx-400">{v.initialLevel}%</div>
+                      <div className="mb-1 text-right font-mono text-sm font-bold text-cyanx-400">{v.initialLevel}%</div>
                       <div className="h-1.5 overflow-hidden rounded-full bg-card-soft">
                         <div className="h-full rounded-full bg-gradient-to-r from-cyanx-600 to-cyanx-400" style={{ width: `${v.initialLevel}%` }} />
                       </div>
@@ -132,14 +132,14 @@ export function ByProductSelector({ selectedId, onSelect }: Props) {
                 <h4 className="font-display text-sm font-semibold text-primary">Protein profile</h4>
               </div>
               <div className="mb-5">
-                <div className="mb-1.5 flex items-center justify-between text-xs">
+                <div className="mb-1.5 flex items-center justify-between text-sm">
                   <span className="text-secondary">Crude protein</span>
                   <span className="font-mono font-bold text-primary">{selected.initialProtein}%</span>
                 </div>
                 <div className="h-3 overflow-hidden rounded-full bg-card-soft">
                   <div className="h-full rounded-full bg-gradient-to-r from-forest-600 to-forest-400" style={{ width: `${selected.initialProtein}%` }} />
                 </div>
-                <div className="mb-1.5 mt-3 flex items-center justify-between text-xs">
+                <div className="mb-1.5 mt-3 flex items-center justify-between text-sm">
                   <span className="text-secondary">Target isolate purity</span>
                   <span className="font-mono font-bold text-cyanx-400">{selected.targetPurity}%</span>
                 </div>

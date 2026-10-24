@@ -75,9 +75,9 @@ export function SensoryPredictor({ selectedId }: Props) {
               />
             </div>
             <div className="mt-5 rounded-xl border border-theme bg-card-soft p-3">
-              <div className="text-[11px] font-medium text-muted">Active feedstock</div>
+              <div className="text-sm font-medium text-muted">Active feedstock</div>
               <div className="font-display text-sm font-bold text-primary">{bp.emoji} {bp.shortName}</div>
-              <div className="mt-1 text-xs text-muted">Initial off-flavor: {bp.offFlavor}/10</div>
+              <div className="mt-1 text-sm text-muted">Initial off-flavor: {bp.offFlavor}/10</div>
             </div>
           </Panel>
         </div>
@@ -93,11 +93,11 @@ export function SensoryPredictor({ selectedId }: Props) {
               {results.volatileReductions.map((v) => (
                 <div key={v.name}>
                   <div className="mb-1.5 flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-xs font-semibold text-primary">
+                    <span className="flex items-center gap-1 text-sm font-semibold text-primary">
                       {v.name}
                       <Tooltip term={v.name} />
                     </span>
-                    <span className="font-mono text-xs font-bold text-forest-300">−{v.reduction}%</span>
+                    <span className="font-mono text-sm font-bold text-forest-300">−{v.reduction}%</span>
                   </div>
                   <div className="flex items-center gap-2">
                     {/* before */}
@@ -109,7 +109,7 @@ export function SensoryPredictor({ selectedId }: Props) {
                       <div className="h-full rounded-full bg-gradient-to-r from-forest-600 to-forest-400" style={{ width: `${Math.max(2, v.initialLevel * (1 - v.reduction / 100))}%` }} />
                     </div>
                   </div>
-                  <div className="mt-1 flex justify-between font-mono text-[9px] text-muted">
+                  <div className="mt-1 flex justify-between font-mono text-sm text-muted">
                     <span>before: {v.initialLevel}%</span>
                     <span>after: {Math.round(v.initialLevel * (1 - v.reduction / 100))}%</span>
                   </div>
@@ -127,16 +127,16 @@ export function SensoryPredictor({ selectedId }: Props) {
                 <Gauge className="h-4 w-4 text-forest-400" />
                 <h4 className="font-display text-sm font-semibold text-primary">Predicted sensory outcomes</h4>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full bg-cyanx-500/15 px-2 py-0.5 text-[10px] font-bold text-cyanx-400">
+              <span className="flex items-center gap-1.5 rounded-full bg-cyanx-500/15 px-2 py-0.5 text-sm font-bold text-cyanx-400">
                 <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-cyanx-400" /> AI MODEL
               </span>
             </div>
 
             {/* big gauge for umami */}
             <div className="mb-4 flex flex-col items-center rounded-xl bg-card-soft p-4">
-              <div className="text-[11px] font-medium uppercase tracking-wider text-muted">Umami / Neutral Flavor Score</div>
+              <div className="text-sm font-medium uppercase tracking-wider text-muted">Umami / Neutral Flavor Score</div>
               <div className="mt-1 font-display text-5xl font-bold text-forest-300">{results.umamiScore}</div>
-              <div className="text-xs text-muted">out of 10</div>
+              <div className="text-sm text-muted">out of 10</div>
               <div className="mt-3 flex gap-1">
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div key={i} className={`h-2.5 w-2.5 rounded-full ${i < Math.round(results.umamiScore) ? 'bg-forest-400' : 'bg-card-soft'}`} />
@@ -149,7 +149,7 @@ export function SensoryPredictor({ selectedId }: Props) {
               <GaugeBar icon={<Wind className="h-4 w-4" />} label="Grassy off-flavor volatilization" value={results.grassyVolatileReduction} tone="cyan" />
             </div>
 
-            <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-card-soft p-2.5 text-[10px] text-muted">
+            <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-card-soft p-2.5 text-sm text-muted">
               <Info className="mt-0.5 h-3 w-3 shrink-0" />
               <span>Model trained on enzymatic hydrolysis kinetics: peptidase cleavage rate × temperature-dependent enzyme activity. Peak efficiency at 55°C; thermal denaturation above 65°C.</span>
             </div>
@@ -166,7 +166,7 @@ function GaugeBar({ icon, label, value, tone }: { icon: React.ReactNode; label: 
   return (
     <div className="rounded-xl bg-card-soft p-3">
       <div className="flex items-center justify-between">
-        <span className="flex items-center gap-1.5 text-xs text-secondary">{icon} {label}</span>
+        <span className="flex items-center gap-1.5 text-sm text-secondary">{icon} {label}</span>
         <span className={`font-display text-lg font-bold ${textTones[tone]}`}>{value}%</span>
       </div>
       <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-card-soft">

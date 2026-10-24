@@ -33,13 +33,18 @@
   --glass-border: rgba(16,185,129,0.20);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 17px; }
+
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+}
 
 body {
   background: var(--bg-base);
   color: var(--text-secondary);
   font-feature-settings: 'cv11', 'ss01';
   transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
 }
 
 .dark body {

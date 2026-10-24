@@ -13,7 +13,7 @@ const tagStyles: Record<DataTag, { bg: string; text: string; ring: string; dot: 
 
 export function DataTagBadge({ tag, size = 'xs' }: { tag: DataTag; size?: 'xs' | 'sm' }) {
   const s = tagStyles[tag];
-  const pad = size === 'xs' ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 py-0.5 text-[10px]';
+  const pad = size === 'xs' ? 'px-1.5 py-0.5 text-sm' : 'px-2 py-0.5 text-sm';
   const label = tag === 'Assumed/Synthetic' ? 'Synthetic' : tag === 'Published' ? 'Published' : 'Measured';
   return (
     <span className={`inline-flex items-center gap-1 rounded-full font-semibold uppercase tracking-wider ring-1 ${s.bg} ${s.text} ${s.ring} ${pad}`}>
@@ -63,11 +63,11 @@ export function Tooltip({ term, children }: { term: string; children?: ReactNode
       </button>
       {open && (
         <span
-          className={`absolute left-1/2 z-50 w-64 -translate-x-1/2 animate-fade-up rounded-xl border border-theme-strong bg-elevated p-3 text-xs leading-relaxed text-secondary shadow-xl ${
+          className={`absolute left-1/2 z-50 w-64 -translate-x-1/2 animate-fade-up rounded-xl border border-theme-strong bg-elevated p-3 text-sm leading-relaxed text-secondary shadow-xl ${
             flipDown ? 'top-full mt-2' : 'bottom-full mb-2'
           }`}
         >
-          <span className="mb-1 block font-display text-xs font-bold text-primary">{term}</span>
+          <span className="mb-1 block font-display text-sm font-bold text-primary">{term}</span>
           {definition}
         </span>
       )}
@@ -146,7 +146,7 @@ export function MetricCard({
   };
   return (
     <div className="glass rounded-xl p-4">
-      <div className="flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-muted">
+      <div className="flex items-center gap-1 text-sm font-medium uppercase tracking-wider text-muted">
         {label}
         {info && <Tooltip term={info} />}
       </div>
@@ -154,7 +154,7 @@ export function MetricCard({
         {value}
         {unit && <span className="ml-0.5 text-sm font-semibold text-muted">{unit}</span>}
       </div>
-      {sub && <div className="mt-0.5 text-xs text-muted">{sub}</div>}
+      {sub && <div className="mt-0.5 text-sm text-muted">{sub}</div>}
     </div>
   );
 }
@@ -170,11 +170,11 @@ export function SectionHeading({
     <div className="mb-8">
       <div className="mb-3 flex items-center gap-2">
         {number && (
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-forest-600/20 font-mono text-xs font-bold text-forest-300 ring-1 ring-forest-600/40">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-forest-600/20 font-mono text-sm font-bold text-forest-300 ring-1 ring-forest-600/40">
             {number}
           </span>
         )}
-        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-forest-400">{eyebrow}</span>
+        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-forest-400">{eyebrow}</span>
       </div>
       <h2 className="font-display text-2xl font-bold tracking-tight text-primary sm:text-3xl">{title}</h2>
       {desc && <p className="mt-2 max-w-3xl text-sm text-secondary sm:text-base">{desc}</p>}
@@ -201,12 +201,12 @@ export function SliderInput({
   return (
     <div>
       <div className="mb-1.5 flex items-center justify-between">
-        <span className="flex items-center gap-1 text-xs font-medium text-secondary">
+        <span className="flex items-center gap-1 text-sm font-medium text-secondary">
           {label}
           {info && <Tooltip term={info} />}
         </span>
         <span className="font-mono text-sm font-bold text-forest-300">
-          {value} <span className="text-xs text-muted">{unit}</span>
+          {value} <span className="text-sm text-muted">{unit}</span>
         </span>
       </div>
       <input
@@ -219,7 +219,7 @@ export function SliderInput({
         className="w-full"
         style={{ ['--pct' as string]: `${pct}%` }}
       />
-      <div className="mt-1 flex justify-between font-mono text-[10px] text-muted">
+      <div className="mt-1 flex justify-between font-mono text-sm text-muted">
         <span>{min}</span>
         <span>{hint}</span>
         <span>{max}</span>

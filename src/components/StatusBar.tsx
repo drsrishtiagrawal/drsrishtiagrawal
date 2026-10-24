@@ -59,7 +59,7 @@ export function Navbar({
             <div className="font-display text-sm font-bold leading-tight text-primary">
               UpcycleAI Engine™ <span className="text-forest-400">v3.0</span>
             </div>
-            <div className="-mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-cyanx-400">
+            <div className="-mt-0.5 text-sm font-semibold uppercase tracking-[0.16em] text-cyanx-400">
               NIFTEM-K · Hack the Fork 2026
             </div>
           </div>
@@ -74,7 +74,7 @@ export function Navbar({
               <button
                 key={l.id}
                 onClick={() => handleNav(l.id)}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs font-medium transition ${
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium transition ${
                   isActive
                     ? 'bg-forest-600/20 text-forest-300 ring-1 ring-forest-600/40'
                     : 'text-muted hover:bg-white/5 hover:text-primary'
@@ -98,7 +98,7 @@ export function Navbar({
                 <button
                   key={p.id}
                   onClick={() => onPersonaChange(p.id)}
-                  className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-semibold transition ${
+                  className={`flex items-center gap-1 rounded-md px-2 py-1 text-sm font-semibold transition ${
                     isActive ? 'bg-forest-600 text-white' : 'text-muted hover:text-primary'
                   }`}
                   title={p.id === 'full' ? 'Full Engineering Suite' : p.id === 'business' ? 'Business & Economic Focus' : 'R&D & Bioprocess Lab Focus'}
@@ -113,7 +113,7 @@ export function Navbar({
           {/* export pitch — icon-only on mobile, label on md+ */}
           <button
             onClick={onExportPitch}
-            className="flex items-center gap-1 rounded-lg border border-theme px-2.5 py-2 text-xs font-semibold text-secondary transition hover:bg-white/5"
+            className="flex items-center gap-1 rounded-lg border border-theme px-2.5 py-2 text-sm font-semibold text-secondary transition hover:bg-white/5"
             title="Export Pitch Summary"
           >
             <FileDown className="h-4 w-4" />
@@ -123,7 +123,7 @@ export function Navbar({
           {/* FSSAI — icon-only on mobile, label on lg+ */}
           <button
             onClick={onOpenFSSAI}
-            className="flex items-center gap-1 rounded-lg border border-theme px-2.5 py-2 text-xs font-semibold text-secondary transition hover:bg-white/5"
+            className="flex items-center gap-1 rounded-lg border border-theme px-2.5 py-2 text-sm font-semibold text-secondary transition hover:bg-white/5"
             title="FSSAI Dossier"
           >
             <FileCheck2 className="h-4 w-4" />
@@ -161,7 +161,7 @@ export function Navbar({
                 <button
                   key={l.id}
                   onClick={() => handleNav(l.id)}
-                  className={`flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-xs font-medium transition ${
+                  className={`flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
                     isActive
                       ? 'bg-forest-600/20 text-forest-300 ring-1 ring-forest-600/40'
                       : 'text-muted hover:bg-white/5 hover:text-primary'
@@ -188,17 +188,17 @@ export function StatusBar() {
     <div className="border-b border-theme bg-elevated/60">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-[11px] font-semibold text-forest-400">
+          <span className="flex items-center gap-1.5 text-sm font-semibold text-forest-400">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-forest-400 opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-forest-400" />
             </span>
             LIVE ENGINE ACTIVE
           </span>
-          <span className="hidden text-[10px] text-muted sm:inline">· Deep-Tech Bioprocess v3.0</span>
+          <span className="hidden text-sm text-muted sm:inline">· Deep-Tech Bioprocess v3.0</span>
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 hidden text-[10px] font-medium uppercase tracking-wider text-muted sm:inline">Data:</span>
+          <span className="mr-1 hidden text-sm font-medium uppercase tracking-wider text-muted sm:inline">Data:</span>
           {tags.map((t) => (
             <DataTagBadge key={t} tag={t} />
           ))}
