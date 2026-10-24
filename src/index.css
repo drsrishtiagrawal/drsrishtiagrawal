@@ -9,28 +9,28 @@
   --bg-card: #ffffff;
   --bg-card-soft: #f8fafc;
   --bg-elevated: #ffffff;
-  --border-color: rgba(148,163,184,0.20);
-  --border-strong: rgba(148,163,184,0.30);
+  --border-color: rgba(71,85,105,0.22);
+  --border-strong: rgba(71,85,105,0.35);
   --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --glass-bg: rgba(255,255,255,0.70);
-  --glass-border: rgba(148,163,184,0.18);
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255,255,255,0.80);
+  --glass-border: rgba(71,85,105,0.22);
 }
 
 .dark {
   color-scheme: dark;
-  --bg-base: #031f0d;
-  --bg-card: rgba(6,46,20,0.40);
-  --bg-card-soft: rgba(10,61,27,0.40);
-  --bg-elevated: #062e14;
-  --border-color: rgba(16,185,129,0.15);
-  --border-strong: rgba(16,185,129,0.30);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --glass-bg: rgba(6,46,20,0.40);
-  --glass-border: rgba(16,185,129,0.20);
+  --bg-base: #042611;
+  --bg-card: rgba(8,52,24,0.75);
+  --bg-card-soft: rgba(12,60,30,0.60);
+  --bg-elevated: #073619;
+  --border-color: rgba(52,211,153,0.22);
+  --border-strong: rgba(52,211,153,0.38);
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --glass-bg: rgba(8,52,24,0.70);
+  --glass-border: rgba(52,211,153,0.28);
 }
 
 html { scroll-behavior: smooth; font-size: 17px; }
@@ -100,10 +100,10 @@ input[type='range']::-moz-range-thumb { height: 18px; width: 18px; border-radius
 :root:not(.dark) input[type='range']::-moz-range-thumb { border-color: #fff; }
 
 /* ── Recharts dark overrides ── */
-.dark .recharts-cartesian-grid line { stroke: rgba(16,185,129,0.10) !important; }
-.recharts-cartesian-grid line { stroke: rgba(148,163,184,0.15) !important; }
-.dark .recharts-text { fill: #94a3b8 !important; }
-.recharts-text { fill: #64748b !important; font-size: 11px; }
+.dark .recharts-cartesian-grid line { stroke: rgba(52,211,153,0.18) !important; }
+.recharts-cartesian-grid line { stroke: rgba(71,85,105,0.22) !important; }
+.dark .recharts-text { fill: #cbd5e1 !important; }
+.recharts-text { fill: #475569 !important; font-size: 13px; }
 .recharts-default-tooltip { background: var(--bg-elevated) !important; border: 1px solid var(--border-strong) !important; border-radius: 10px !important; }
 .recharts-tooltip-label { color: var(--text-primary) !important; }
 
