@@ -2,98 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme variables ── */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+  --bg-base: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-soft: #f8fafc;
+  --bg-elevated: #ffffff;
+  --border-color: rgba(148,163,184,0.20);
+  --border-strong: rgba(148,163,184,0.30);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(255,255,255,0.70);
+  --glass-border: rgba(148,163,184,0.18);
 }
 
-html {
-  scroll-behavior: smooth;
+.dark {
+  color-scheme: dark;
+  --bg-base: #031f0d;
+  --bg-card: rgba(6,46,20,0.40);
+  --bg-card-soft: rgba(10,61,27,0.40);
+  --bg-elevated: #062e14;
+  --border-color: rgba(16,185,129,0.15);
+  --border-strong: rgba(16,185,129,0.30);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --glass-bg: rgba(6,46,20,0.40);
+  --glass-border: rgba(16,185,129,0.20);
 }
+
+html { scroll-behavior: smooth; }
 
 body {
-  @apply bg-ink-900 text-slate-200 antialiased;
+  background: var(--bg-base);
+  color: var(--text-secondary);
   font-feature-settings: 'cv11', 'ss01';
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-ink-900;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-ink-700 rounded-full border-2 border-solid border-transparent bg-clip-content;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-forest-700;
+.dark body {
+  background:
+    radial-gradient(ellipse at 20% 0%, #0a3d1b 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, #062e14 0%, transparent 50%),
+    #031f0d;
 }
 
-/* Grid texture */
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #10b981; background-clip: content-box; }
+
+/* ── Utility classes using CSS vars ── */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.bg-base { background: var(--bg-base); }
+.bg-card { background: var(--bg-card); }
+.bg-card-soft { background: var(--bg-card-soft); }
+.bg-elevated { background: var(--bg-elevated); }
+.border-theme { border-color: var(--border-color); }
+.border-theme-strong { border-color: var(--border-strong); }
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
 .bg-grid-dark {
   background-image:
-    linear-gradient(to right, rgba(148,163,184,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148,163,184,0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(16,185,129,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16,185,129,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.bg-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(148,163,184,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148,163,184,0.06) 1px, transparent 1px);
   background-size: 36px 36px;
 }
 
-/* Glassy panel */
-.glass {
-  background: rgba(30, 41, 59, 0.45);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.12);
-}
+/* ── Range sliders ── */
+input[type='range'] { -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; }
+input[type='range']::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(to right, #10b981 var(--pct,50%), var(--border-strong) var(--pct,50%)); }
+input[type='range']::-moz-range-track { height: 6px; border-radius: 999px; background: var(--border-strong); }
+input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; margin-top: -6px; height: 18px; width: 18px; border-radius: 999px; background: #34d399; border: 2px solid #031f0d; box-shadow: 0 0 0 3px rgba(16,185,129,0.25); }
+input[type='range']::-moz-range-thumb { height: 18px; width: 18px; border-radius: 999px; background: #34d399; border: 2px solid #031f0d; box-shadow: 0 0 0 3px rgba(16,185,129,0.25); }
+:root:not(.dark) input[type='range']::-webkit-slider-thumb { border-color: #fff; }
+:root:not(.dark) input[type='range']::-moz-range-thumb { border-color: #fff; }
 
-/* Range slider styling */
-input[type='range'] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-}
-input[type='range']::-webkit-slider-runnable-track {
-  height: 6px;
-  border-radius: 999px;
-  background: linear-gradient(to right, #10b981 var(--pct, 50%), #1e293b var(--pct, 50%));
-}
-input[type='range']::-moz-range-track {
-  height: 6px;
-  border-radius: 999px;
-  background: #1e293b;
-}
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  margin-top: -6px;
-  height: 18px;
-  width: 18px;
-  border-radius: 999px;
-  background: #34d399;
-  border: 2px solid #052e16;
-  box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
-}
-input[type='range']::-moz-range-thumb {
-  height: 18px;
-  width: 18px;
-  border-radius: 999px;
-  background: #34d399;
-  border: 2px solid #052e16;
-  box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
-}
+/* ── Recharts dark overrides ── */
+.dark .recharts-cartesian-grid line { stroke: rgba(16,185,129,0.10) !important; }
+.recharts-cartesian-grid line { stroke: rgba(148,163,184,0.15) !important; }
+.dark .recharts-text { fill: #94a3b8 !important; }
+.recharts-text { fill: #64748b !important; font-size: 11px; }
+.recharts-default-tooltip { background: var(--bg-elevated) !important; border: 1px solid var(--border-strong) !important; border-radius: 10px !important; }
+.recharts-tooltip-label { color: var(--text-primary) !important; }
 
-/* Recharts dark overrides */
-.recharts-cartesian-grid line {
-  stroke: rgba(148,163,184,0.10) !important;
-}
-.recharts-text {
-  fill: #94a3b8 !important;
-  font-size: 11px;
-}
-.recharts-default-tooltip {
-  background: #131c31 !important;
-  border: 1px solid rgba(148,163,184,0.15) !important;
-  border-radius: 10px !important;
-}
-.recharts-tooltip-label {
-  color: #e2e8f0 !important;
+@media print {
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
 }
