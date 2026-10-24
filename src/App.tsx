@@ -21,7 +21,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState('groundnut-cake');
   const [activeNav, setActiveNav] = useState('top');
   const [persona, setPersona] = useState<Persona>('full');
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [fssaiOpen, setFssaiOpen] = useState(false);
   const [pitchOpen, setPitchOpen] = useState(false);
 

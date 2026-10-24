@@ -5,17 +5,17 @@
 /* ── Theme variables ── */
 :root {
   color-scheme: light;
-  --bg-base: #f1f5f9;
+  --bg-base: #f0f4f8;
   --bg-card: #ffffff;
-  --bg-card-soft: #f8fafc;
+  --bg-card-soft: #f6f8fb;
   --bg-elevated: #ffffff;
-  --border-color: rgba(71,85,105,0.22);
-  --border-strong: rgba(71,85,105,0.35);
+  --border-color: rgba(15,23,42,0.15);
+  --border-strong: rgba(15,23,42,0.25);
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
-  --glass-bg: rgba(255,255,255,0.80);
-  --glass-border: rgba(71,85,105,0.22);
+  --glass-bg: rgba(255,255,255,0.88);
+  --glass-border: rgba(15,23,42,0.12);
 }
 
 .dark {
@@ -47,6 +47,13 @@ body {
   line-height: 1.6;
 }
 
+:root:not(.dark) body {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(16,185,129,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(6,182,212,0.05) 0%, transparent 50%),
+    #f0f4f8;
+}
+
 .dark body {
   background:
     radial-gradient(ellipse at 20% 0%, #0a3d1b 0%, transparent 50%),
@@ -75,6 +82,89 @@ body {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
+}
+
+/* ── Light mode accent overrides ──
+   Components use dark-optimized Tailwind classes (e.g. text-forest-300 is
+   a pale mint, bg-white/5 is nearly transparent). In light mode these are
+   unreadable, so we remap them to darker, high-contrast equivalents. */
+:root:not(.dark) {
+  /* forest accent text → darker greens readable on white */
+  --lm-forest-text: #047857;
+  --lm-forest-border: #10b981;
+  --lm-cyan-text: #0891b2;
+  --lm-amber-text: #b45309;
+  --lm-purple-text: #7c3aed;
+  --lm-rose-text: #be123c;
+}
+
+:root:not(.dark) .text-forest-300 { color: var(--lm-forest-text) !important; }
+:root:not(.dark) .text-forest-400 { color: var(--lm-forest-text) !important; }
+:root:not(.dark) .text-cyanx-400 { color: var(--lm-cyan-text) !important; }
+:root:not(.dark) .text-amber-400 { color: var(--lm-amber-text) !important; }
+:root:not(.dark) .text-purple-400 { color: var(--lm-purple-text) !important; }
+:root:not(.dark) .text-rose-400 { color: var(--lm-rose-text) !important; }
+
+/* badge/tag backgrounds — use solid light tints instead of translucent white/5 */
+:root:not(.dark) .bg-forest-600\/10 { background: rgba(16,185,129,0.12) !important; }
+:root:not(.dark) .bg-forest-600\/15 { background: rgba(16,185,129,0.14) !important; }
+:root:not(.dark) .bg-forest-600\/20 { background: rgba(16,185,129,0.16) !important; }
+:root:not(.dark) .bg-forest-500\/10 { background: rgba(16,185,129,0.12) !important; }
+:root:not(.dark) .bg-forest-500\/15 { background: rgba(16,185,129,0.14) !important; }
+:root:not(.dark) .bg-cyanx-500\/10 { background: rgba(6,182,212,0.12) !important; }
+:root:not(.dark) .bg-cyanx-500\/15 { background: rgba(6,182,212,0.14) !important; }
+:root:not(.dark) .bg-amber-500\/10 { background: rgba(245,158,11,0.12) !important; }
+:root:not(.dark) .bg-purple-500\/10 { background: rgba(168,85,247,0.12) !important; }
+:root:not(.dark) .bg-rose-500\/10 { background: rgba(244,63,94,0.12) !important; }
+
+/* bg-white/5 is invisible on white — use a light gray instead */
+:root:not(.dark) .bg-white\/5 { background: rgba(15,23,42,0.05) !important; }
+
+/* forest ring colors — slightly darker for visibility on light */
+:root:not(.dark) .ring-forest-600\/40 { --tw-ring-color: rgba(16,185,129,0.45) !important; }
+:root:not(.dark) .ring-forest-600\/30 { --tw-ring-color: rgba(16,185,129,0.35) !important; }
+:root:not(.dark) .ring-forest-500\/30 { --tw-ring-color: rgba(16,185,129,0.30) !important; }
+:root:not(.dark) .ring-cyanx-500\/30 { --tw-ring-color: rgba(6,182,212,0.30) !important; }
+:root:not(.dark) .ring-purple-500\/30 { --tw-ring-color: rgba(168,85,247,0.30) !important; }
+:root:not(.dark) .ring-amber-500\/30 { --tw-ring-color: rgba(245,158,11,0.30) !important; }
+
+/* borders using forest-600 — ensure visible on light */
+:root:not(.dark) .border-forest-600\/40 { border-color: rgba(16,185,129,0.50) !important; }
+:root:not(.dark) .border-forest-600\/50 { border-color: rgba(16,185,129,0.55) !important; }
+:root:not(.dark) .border-forest-600\/30 { border-color: rgba(16,185,129,0.40) !important; }
+:root:not(.dark) .border-forest-500 { border-color: #10b981 !important; }
+:root:not(.dark) .border-cyanx-500\/20 { border-color: rgba(6,182,212,0.40) !important; }
+
+/* gradient text in hero — needs darker base color for light mode */
+:root:not(.dark) .from-forest-400 { --tw-gradient-from: #059669 !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent) !important; }
+:root:not(.dark) .via-cyanx-400 { --tw-gradient-via: #0891b2 !important; }
+
+/* hover states that use bg-white/5 */
+:root:not(.dark) .hover\:bg-white\/5:hover { background: rgba(15,23,42,0.06) !important; }
+
+/* forest-600/30 bg for numbered badges */
+:root:not(.dark) .bg-forest-600\/30 { background: rgba(16,185,129,0.18) !important; }
+
+:root:not(.dark) .bg-forest-600\/5 { background: rgba(16,185,129,0.06) !important; }
+
+/* grid pattern for light mode hero */
+:root:not(.dark) .bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(16,185,129,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16,185,129,0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* gradient hero panel blur orbs — more visible in light */
+:root:not(.dark) .bg-forest-600\/20 { background: rgba(16,185,129,0.15) !important; }
+:root:not(.dark) .bg-forest-600\/30 { background: rgba(16,185,129,0.18) !important; }
+
+:root:not(.dark) .text-slate-200 { color: #475569 !important; }
+:root:not(.dark) .border-slate-600 { border-color: #cbd5e1 !important; }
+
+/* shadow-glow-emerald — softer in light mode */
+:root:not(.dark) .shadow-glow-emerald {
+  box-shadow: 0 0 0 1px rgba(16,185,129,0.30), 0 8px 30px -10px rgba(16,185,129,0.35) !important;
 }
 
 .bg-grid-dark {
