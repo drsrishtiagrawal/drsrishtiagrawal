@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-900 text-slate-200 antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ink-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-700 rounded-full border-2 border-solid border-transparent bg-clip-content;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-forest-700;
+}
+
+/* Grid texture */
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(148,163,184,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148,163,184,0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Glassy panel */
+.glass {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+/* Range slider styling */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #10b981 var(--pct, 50%), #1e293b var(--pct, 50%));
+}
+input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #1e293b;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6px;
+  height: 18px;
+  width: 18px;
+  border-radius: 999px;
+  background: #34d399;
+  border: 2px solid #052e16;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+}
+input[type='range']::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 999px;
+  background: #34d399;
+  border: 2px solid #052e16;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+}
+
+/* Recharts dark overrides */
+.recharts-cartesian-grid line {
+  stroke: rgba(148,163,184,0.10) !important;
+}
+.recharts-text {
+  fill: #94a3b8 !important;
+  font-size: 11px;
+}
+.recharts-default-tooltip {
+  background: #131c31 !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  border-radius: 10px !important;
+}
+.recharts-tooltip-label {
+  color: #e2e8f0 !important;
+}
